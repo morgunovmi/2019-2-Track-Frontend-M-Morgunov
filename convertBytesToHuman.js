@@ -12,9 +12,9 @@
  * и класса (например, отрицательные числа)
  */
 
-export default
 
- var prefixEnum = { "K": 10, "M": 20, "G": 30, "T": 40, "P": 50 };
+
+var prefixEnum = { "K": 10, "M": 20, "G": 30, "T": 40, "P": 50 };
 
 function ifFits(bytes, power) {
   return bytes / Math.pow(2, power) < 1024 && bytes / Math.pow(2, power)
@@ -45,6 +45,8 @@ function output(bytes, string) {
   }
   return genBytes + " " + string + "B"
 }
+
+export default
 
 function convertBytesToHuman(bytes) {
   if (isNaN(bytes) || bytes < 0) {
