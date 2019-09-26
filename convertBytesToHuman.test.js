@@ -11,11 +11,14 @@ import convertBytesToHuman from "./convertBytesToHuman.js"
 test('Возвращает false для неправильного типа данных', () => {
   expect(convertBytesToHuman(-5)).toBe(false)
   expect(convertBytesToHuman('string')).toBe(false)
+  expect(convertBytesToHuman(NaN)).toBe(false)
+  expect(convertBytesToHuman(Infinity)).toBe(false)
 });
 
 test('Возвращает корректное значение для чисел', () => {
-  expect(convertBytesToHuman(5)).toBe(5)
-  // ...
+  expect(convertBytesToHuman(1024)).toBe("1 KB")
+  expect(convertBytesToHuman(123123123)).toBe("117.42 MB")
+  expect(convertBytesToHuman(125125125125)).toBe("116.53 GB")
 });
 
 // другая группа проверок
