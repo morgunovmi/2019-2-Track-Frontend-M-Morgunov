@@ -23,9 +23,8 @@ nonUniqueElements([1, 2, 3, 4, 5]) == []
 nonUniqueElements([5, 5, 5, 5, 5]) == [5, 5, 5, 5, 5]
 nonUniqueElements([10, 9, 10, 10, 9, 8]) == [10, 9, 10, 10, 9]
  */
-export default
 
-function nonUniqueElements(data) {
+export default function nonUniqueElements(data) {
   let i = 0
   while (i < data.length) {
     let counter = 0

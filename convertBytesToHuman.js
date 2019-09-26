@@ -46,9 +46,7 @@ function output(bytes, string) {
   return genBytes + " " + string + "B"
 }
 
-export default
-
-function convertBytesToHuman(bytes) {
+export default function convertBytesToHuman(bytes) {
   if (isNaN(bytes) || bytes < 0 || bytes == Infinity) {
     return false
   }
