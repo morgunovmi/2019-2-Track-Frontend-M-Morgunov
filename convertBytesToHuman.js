@@ -14,7 +14,7 @@
 
 export default
 
-  prefixEnum = { "K": 10, "M": 20, "G": 30, "T": 40, "P": 50 }
+ var prefixEnum = { "K": 10, "M": 20, "G": 30, "T": 40, "P": 50 };
 
 function ifFits(bytes, power) {
   return bytes / Math.pow(2, power) < 1024 && bytes / Math.pow(2, power)
@@ -39,7 +39,7 @@ function prefixSet(bytes) {
 }
 
 function output(bytes, string) {
-  genBytes = bytes / Math.pow(2, prefixEnum[string])
+  let genBytes = bytes / Math.pow(2, prefixEnum[string])
   if (!Number.isInteger(genBytes)) {
     genBytes = genBytes.toFixed(2)
   }
