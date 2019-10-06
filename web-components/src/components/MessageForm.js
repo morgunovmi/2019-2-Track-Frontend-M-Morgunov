@@ -13,10 +13,12 @@ template.innerHTML = `
         input[type=submit] {
             visibility: collapse;
         }
+
     </style>
     <form>
         <div class="result"></div>
-        <form-input name="message-text" placeholder="Введите сообщеине"></form-input>
+        <form-input name="message-text" placeholder="Введите сообщеине">
+        </form-input>
     </form>
 `;
 
