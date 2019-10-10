@@ -15,13 +15,8 @@ template.innerHTML = `
           border: 0px solid rgba(25, 25, 25, 0.32);
         }
 
-        .message-space {
-          flex-grow 1;
-        }
-
-        div {
+        .form-input-container {
           display: flex;
-          flex-shrink: 0;
         }
 
         .attachment-button {
