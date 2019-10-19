@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-const template = document.createElement('template');
+const template = document.createElement('template')
 template.innerHTML = `
     <style>
     svg {
@@ -63,28 +63,28 @@ template.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 18c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3z"/></svg>
         </div>
     </div>
-`;
+`
 
 class ChatHeader extends HTMLElement {
   constructor() {
-    super();
-    this._shadowRoot = this.attachShadow({ mode: 'open' });
-    this._shadowRoot.appendChild(template.content.cloneNode(true));
+    super()
+    this._shadowRoot = this.attachShadow({ mode: 'open' })
+    this._shadowRoot.appendChild(template.content.cloneNode(true))
 
-    this.$back = this.shadowRoot.querySelector('back-button');
-    this.$menu = this.shadowRoot.querySelector('menu-button');
-    this.$search = this.shadowRoot.querySelector('search-button');
+    this.$back = this.shadowRoot.querySelector('back-button')
+    this.$menu = this.shadowRoot.querySelector('menu-button')
+    this.$search = this.shadowRoot.querySelector('search-button')
   }
 
   static get observedAttributes() {
-    return ['name', 'value'];
+    return ['name', 'value']
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    this.$back.setAttribute(name, newValue);
-    this.$menu.setAttribute(name, newValue);
-    this.$search.setAttribute(name, newValue);
+    this.$back.setAttribute(name, newValue)
+    this.$menu.setAttribute(name, newValue)
+    this.$search.setAttribute(name, newValue)
   }
 }
 
-customElements.define('chat-header', ChatHeader);
+customElements.define('chat-header', ChatHeader)

@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-const template = document.createElement('template');
+const template = document.createElement('template')
 template.innerHTML = `
 <style>
 
@@ -47,32 +47,32 @@ p.time {
     </div>
   </div>
 </template>
-`;
+`
 
 class MessageSpace extends HTMLElement {
   constructor() {
-    super();
-    this._shadowRoot = this.attachShadow({ mode: 'open' });
-    this._shadowRoot.appendChild(template.content.cloneNode(true));
+    super()
+    this._shadowRoot = this.attachShadow({ mode: 'open' })
+    this._shadowRoot.appendChild(template.content.cloneNode(true))
   }
 
   static get observedAttributes() {
-    return ['name', 'value', 'placeholder', 'disabled'];
+    return ['name', 'value', 'placeholder', 'disabled']
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    this.$input.setAttribute(name, newValue);
+    this.$input.setAttribute(name, newValue)
   }
 
   spawnMessage() {
-    const testMessage = JSON.parse(window.localStorage.getItem('message'));
+    const testMessage = JSON.parse(window.localStorage.getItem('message'))
 
-    const messageTemplate = this._shadowRoot.querySelector('template');
-    this._shadowRoot.appendChild(messageTemplate.content.cloneNode(true));
-    const thisMessage = this._shadowRoot.querySelector('.message-container');
-    thisMessage.querySelector('.message').textContent = testMessage.textValue;
-    thisMessage.querySelector('.time').textContent = testMessage.timeValue;
+    const messageTemplate = this._shadowRoot.querySelector('template')
+    this._shadowRoot.appendChild(messageTemplate.content.cloneNode(true))
+    const thisMessage = this._shadowRoot.querySelector('.message-container')
+    thisMessage.querySelector('.message').textContent = testMessage.textValue
+    thisMessage.querySelector('.time').textContent = testMessage.timeValue
   }
 }
 
-customElements.define('message-space', MessageSpace);
+customElements.define('message-space', MessageSpace)

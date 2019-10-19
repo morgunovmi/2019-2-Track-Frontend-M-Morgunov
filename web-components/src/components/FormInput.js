@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
-import './MessageForm';
+import './MessageForm'
 
-const template = document.createElement('template');
+const template = document.createElement('template')
 template.innerHTML = `
     <style>
 
@@ -39,32 +39,32 @@ template.innerHTML = `
     </div>
     </div>
     </input>
-`;
+`
 
 class FormInput extends HTMLElement {
   constructor() {
-    super();
-    this._shadowRoot = this.attachShadow({ mode: 'open' });
-    this._shadowRoot.appendChild(template.content.cloneNode(true));
+    super()
+    this._shadowRoot = this.attachShadow({ mode: 'open' })
+    this._shadowRoot.appendChild(template.content.cloneNode(true))
 
-    this.$input = this.shadowRoot.querySelector('input');
+    this.$input = this.shadowRoot.querySelector('input')
   }
 
   static get observedAttributes() {
-    return ['name', 'value', 'placeholder', 'disabled'];
+    return ['name', 'value', 'placeholder', 'disabled']
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    this.$input.setAttribute(name, newValue);
+    this.$input.setAttribute(name, newValue)
   }
 
   get value() {
-    return this.$input.value;
+    return this.$input.value
   }
 
   clear() {
-    this.$input.value = '';
+    this.$input.value = ''
   }
 }
 
-customElements.define('form-input', FormInput);
+customElements.define('form-input', FormInput)
