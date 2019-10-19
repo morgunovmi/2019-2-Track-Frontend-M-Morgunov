@@ -49,9 +49,8 @@ class MessageForm extends HTMLElement {
         timeValue: curTime,
       };
       window.localStorage.setItem('message', JSON.stringify(message));
-      const testMessage = JSON.parse(window.localStorage.getItem('message'));
       const messageSpace = document.querySelector('message-space');
-      messageSpace.spawnMessage(testMessage.textValue, testMessage.timeValue);
+      messageSpace.spawnMessage();
       this.$input.clear();
     }
   }

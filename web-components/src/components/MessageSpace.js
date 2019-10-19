@@ -64,12 +64,14 @@ class MessageSpace extends HTMLElement {
     this.$input.setAttribute(name, newValue);
   }
 
-  spawnMessage(input, time) {
+  spawnMessage() {
+    const testMessage = JSON.parse(window.localStorage.getItem('message'));
+
     const messageTemplate = this._shadowRoot.querySelector('template');
     this._shadowRoot.appendChild(messageTemplate.content.cloneNode(true));
     const thisMessage = this._shadowRoot.querySelector('.message-container');
-    thisMessage.querySelector('.message').textContent = input;
-    thisMessage.querySelector('.time').textContent = time;
+    thisMessage.querySelector('.message').textContent = testMessage.textValue;
+    thisMessage.querySelector('.time').textContent = testMessage.timeValue;
   }
 }
 
