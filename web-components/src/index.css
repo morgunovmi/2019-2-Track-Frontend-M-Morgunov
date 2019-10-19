@@ -13,7 +13,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    height: 100%;
+    height: 100vh;
     margin: 0;
     background-color: rgb(255, 255, 255);
     color: #333;
@@ -24,5 +24,18 @@ body {
 }
 
 message-space {
+    background-color: rgb(247, 247, 247);
+    display: flex;
     flex: 1;
+    flex-direction: column-reverse;
+    vertical-align: bottom;
+    overflow-y: auto;
+}
+
+message-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-top-style: groove;
+    border-width: 1px;
 }

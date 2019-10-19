@@ -1,13 +1,10 @@
 /* eslint-disable no-underscore-dangle */
+
 const template = document.createElement('template');
 template.innerHTML = `
     <style>
         form-input {
             width: 100%;
-        }
-
-        .result {
-            color: red;
         }
 
         input[type=submit] {
@@ -16,7 +13,6 @@ template.innerHTML = `
 
     </style>
     <form>
-        <div class="result"></div>  
         <form-input name="message-text" placeholder="Введите сообщение">
         </form-input>
     </form>
@@ -29,15 +25,35 @@ class MessageForm extends HTMLElement {
     this._shadowRoot.appendChild(template.content.cloneNode(true));
     this.$form = this._shadowRoot.querySelector('form');
     this.$input = this._shadowRoot.querySelector('form-input');
-    this.$message = this._shadowRoot.querySelector('.result');
 
     this.$form.addEventListener('submit', this._onSubmit.bind(this));
     this.$form.addEventListener('keypress', this._onKeyPress.bind(this));
+    this.$input.addEventListener('submit', this._onSubmit.bind(this));
+  }
+
+  static get observedAttributes() {
+    return ['name', 'value', 'placeholder', 'disabled'];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    this.$input.setAttribute(name, newValue);
   }
 
   _onSubmit(event) {
     event.preventDefault();
-    this.$message.innerText = this.$input.value;
+    if (this.$input.value !== '') {
+      const curDate = new Date();
+      const curTime = `${curDate.getHours()}:${curDate.getMinutes()}`;
+      const message = {
+        textValue: this.$input.value,
+        timeValue: curTime,
+      };
+      window.localStorage.setItem('message', JSON.stringify(message));
+      const testMessage = JSON.parse(window.localStorage.getItem('message'));
+      const messageSpace = document.querySelector('message-space');
+      messageSpace.spawnMessage(testMessage.textValue, testMessage.timeValue);
+      this.$input.clear();
+    }
   }
 
   _onKeyPress(event) {

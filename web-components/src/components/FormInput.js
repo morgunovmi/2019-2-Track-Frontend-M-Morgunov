@@ -1,13 +1,15 @@
 /* eslint-disable no-underscore-dangle */
+import './MessageForm';
+
 const template = document.createElement('template');
 template.innerHTML = `
     <style>
 
         input {
-            padding: 20px 15px 20px 15px;
-            border: 0;
-            outline: none;
-            width: calc(100% - 2px);
+          padding: 20px 15px 20px 15px;
+          border: 0;
+          outline: none;
+          width: calc(100% - 2px);
         }
 
         :host {
@@ -58,6 +60,10 @@ class FormInput extends HTMLElement {
 
   get value() {
     return this.$input.value;
+  }
+
+  clear() {
+    this.$input.value = '';
   }
 }
 
