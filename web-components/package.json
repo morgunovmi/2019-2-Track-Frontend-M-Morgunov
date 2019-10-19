@@ -29,5 +29,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "eslint-config-prettier": "^6.4.0"
+  }
 }
