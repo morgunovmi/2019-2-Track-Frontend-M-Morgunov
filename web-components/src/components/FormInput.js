@@ -1,6 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-import './MessageForm'
-
 const template = document.createElement('template')
 template.innerHTML = `
     <style>

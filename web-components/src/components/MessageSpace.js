@@ -65,10 +65,11 @@ class MessageSpace extends HTMLElement {
   }
 
   spawnMessage() {
-    const testMessage = JSON.parse(window.localStorage.getItem('message'))
+    const messageBase = JSON.parse(window.localStorage.getItem('messageBase'))
+    const testMessage = messageBase[messageBase.length - 1]
 
     const messageTemplate = this._shadowRoot.querySelector('template')
-    this._shadowRoot.appendChild(messageTemplate.content.cloneNode(true))
+    this._shadowRoot.prepend(messageTemplate.content.cloneNode(true))
     const thisMessage = this._shadowRoot.querySelector('.message-container')
     thisMessage.querySelector('.message').textContent = testMessage.textValue
     thisMessage.querySelector('.time').textContent = testMessage.timeValue

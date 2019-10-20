@@ -28,8 +28,9 @@ class MessageForm extends HTMLElement {
 
     this.$form.addEventListener('submit', this._onSubmit.bind(this))
     this.$form.addEventListener('keypress', this._onKeyPress.bind(this))
-    this.$input.addEventListener('submit', this._onSubmit.bind(this))
   }
+
+  messageBase = []
 
   static get observedAttributes() {
     return ['name', 'value', 'placeholder', 'disabled']
@@ -44,11 +45,15 @@ class MessageForm extends HTMLElement {
     if (this.$input.value !== '') {
       const curDate = new Date()
       const curTime = `${curDate.getHours()}:${curDate.getMinutes()}`
+
       const message = {
+        origin: 'Person',
         textValue: this.$input.value,
         timeValue: curTime,
       }
-      window.localStorage.setItem('message', JSON.stringify(message))
+      this.messageBase.push(message)
+
+      window.localStorage.setItem('messageBase', JSON.stringify(this.messageBase))
       const messageSpace = document.querySelector('message-space')
       messageSpace.spawnMessage()
       this.$input.clear()
