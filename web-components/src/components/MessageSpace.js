@@ -25,6 +25,7 @@ p.time {
   justify-content: flex-end;
   margin: 1px 1px;
   font-size: 12px;
+  color: rgb(142, 142, 142);
 }
 
 .message-container {
@@ -32,9 +33,8 @@ p.time {
   flex-direction: column;
   justify-content: flex-end;
   padding: 20px 20px 5px;
-  background-color: rgb(248, 201, 255);
+  background-color: rgb(245, 227, 255);
   border-radius: 5px;
-  box-shadow: 1px 1px 2px #888;
   margin: 10px 20px 10px 20px;
 }
 
@@ -54,6 +54,17 @@ class MessageSpace extends HTMLElement {
     super()
     this._shadowRoot = this.attachShadow({ mode: 'open' })
     this._shadowRoot.appendChild(template.content.cloneNode(true))
+
+    const messageBase = JSON.parse(window.localStorage.getItem('messageBase'))
+    if (messageBase != null) {
+    messageBase.forEach(message => {
+      const messageTemplate = this._shadowRoot.querySelector('template')
+      this._shadowRoot.prepend(messageTemplate.content.cloneNode(true))
+      const thisMessage = this._shadowRoot.querySelector('.message-container')
+      thisMessage.querySelector('.message').textContent = message.textValue
+      thisMessage.querySelector('.time').textContent = message.timeValue
+    })
+  }
   }
 
   static get observedAttributes() {

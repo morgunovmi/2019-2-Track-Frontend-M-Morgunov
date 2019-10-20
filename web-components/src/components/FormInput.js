@@ -25,8 +25,12 @@ template.innerHTML = `
           padding: 20px 15px 20px 15px;
         }
 
+        .attachment-button svg {
+          fill: rgb(181, 181, 181);
+        }
+
         .attachment-button:hover svg {
-          fill: red;
+          fill: black;
         }
         
     </style>

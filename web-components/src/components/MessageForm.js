@@ -30,7 +30,7 @@ class MessageForm extends HTMLElement {
     this.$form.addEventListener('keypress', this._onKeyPress.bind(this))
   }
 
-  messageBase = []
+  messageBase = JSON.parse(window.localStorage.getItem('messageBase'))
 
   static get observedAttributes() {
     return ['name', 'value', 'placeholder', 'disabled']
@@ -50,6 +50,9 @@ class MessageForm extends HTMLElement {
         origin: 'Person',
         textValue: this.$input.value,
         timeValue: curTime,
+      }
+      if (this.messageBase == null) {
+        this.messageBase = []
       }
       this.messageBase.push(message)
 

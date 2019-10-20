@@ -12,7 +12,24 @@ template.innerHTML = `
         justify-content: space-between;
         width: 100%;
         height: 67px;
-        background-color: rgb(143, 43, 186);
+        background-color: rgb(130, 64, 163);
+    }
+
+    .chat-info-container {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+    }
+
+    .chat-icon {
+        padding: 0px 20px 0px 20px;
+        align-self: center;
+    }
+
+    .chat-info {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
     }
     
     .chat-title {
@@ -20,7 +37,15 @@ template.innerHTML = `
         color: white;
         font-weight: bold;
         flex-grow: 1;
-        text-align: center; 
+        text-align: left; 
+        margin: 0px;
+    }
+
+    .chat-status {
+        text-align: center;
+        font-size: 10px;
+        color: rgb(243, 222, 255);
+        margin: 0px;
     }
     
     .back-button {
@@ -29,7 +54,7 @@ template.innerHTML = `
     }
     
     .back-button:hover svg {
-        fill: black;
+        fill: rgb(243, 222, 255);
     }
     
     .search-button {
@@ -38,7 +63,7 @@ template.innerHTML = `
     }
     
     .search-button:hover svg {
-        fill: black;
+        fill: rgb(243, 222, 255);
     }
     
     .menu-button {
@@ -47,15 +72,23 @@ template.innerHTML = `
     }
     
     .menu-button:hover svg {
-        fill: black;
+        fill: rgb(243, 222, 255);
     }
 
     </style>
     <div class="chat-header">
         <div class="back-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 12l9-8v6h15v4h-15v6z"/></svg>
+        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M2.117 12l7.527 6.235-.644.765-9-7.521 9-7.479.645.764-7.529 6.236h21.884v1h-21.883z"/></svg>
         </div>
-        <span class="chat-title">Dolan Dark</span>
+        <div class="chat-info-container">
+        <div class="chat-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M20.822 18.096c-3.439-.794-6.641-1.49-5.09-4.418 4.719-8.912 1.251-13.678-3.732-13.678-5.081 0-8.464 4.949-3.732 13.678 1.597 2.945-1.725 3.641-5.09 4.418-2.979.688-3.178 2.143-3.178 4.663l.005 1.241h10.483l.704-3h1.615l.704 3h10.483l.005-1.241c.001-2.52-.198-3.975-3.177-4.663zm-8.231 1.904h-1.164l-.91-2h2.994l-.92 2z"/></svg>
+        </div>
+        <div class="chat-info">
+        <p class="chat-title">Donald</p>
+        <p class="chat-status">last seen 15 minutes ago</p>
+        </div>
+        </div>
         <div class="search-button">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7z"/></svg>
         </div>
