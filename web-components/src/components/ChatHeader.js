@@ -47,6 +47,11 @@ template.innerHTML = `
         color: rgb(243, 222, 255);
         margin: 0px;
     }
+
+    .burger-button {
+        display: none;
+        padding: 20px 15px 20px 15px;
+    }
     
     .back-button {
         position: relative;
@@ -77,6 +82,9 @@ template.innerHTML = `
 
     </style>
     <div class="chat-header">
+        <div class="burger-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg>
+        </div>
         <div class="back-button">
         <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M2.117 12l7.527 6.235-.644.765-9-7.521 9-7.479.645.764-7.529 6.236h21.884v1h-21.883z"/></svg>
         </div>
@@ -103,7 +111,28 @@ class ChatHeader extends HTMLElement {
     super()
     this._shadowRoot = this.attachShadow({ mode: 'open' })
     this._shadowRoot.appendChild(template.content.cloneNode(true))
+
+    this.$back = this._shadowRoot.querySelector('.back-button')
+    this.$menu = this._shadowRoot.querySelector('.menu-button')
+    this.$ciContainer = this._shadowRoot.querySelector('.chat-info-container')
+    this.$back.addEventListener('click', this._onClickBack.bind(this))
   }
+
+  // eslint-disable-next-line class-methods-use-this
+  _onClickBack(event) {
+      event.preventDefault()
+      console.log('Click')
+      document.querySelector('message-space').style.display = 'none'
+      document.querySelector('message-form').style.display = 'none'
+      this.$back.style.display = 'none'
+      this._shadowRoot.querySelector('.burger-button').style.display = 'flex'
+      this.$menu.style.display = 'none'
+      this.$ciContainer.style.display = 'none'
+      document.querySelector('chat-list').style.display = 'flex'
+
+  }
+
+
 }
 
 customElements.define('chat-header', ChatHeader)

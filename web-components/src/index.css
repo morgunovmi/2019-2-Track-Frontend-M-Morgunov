@@ -39,3 +39,9 @@ message-form {
     border-top-style: groove;
     border-width: 1px;
 }
+
+chat-list {
+    display: none;
+    flex-direction: column;
+    flex: 1;
+}
