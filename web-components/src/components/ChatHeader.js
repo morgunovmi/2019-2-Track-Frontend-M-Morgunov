@@ -103,20 +103,6 @@ class ChatHeader extends HTMLElement {
     super()
     this._shadowRoot = this.attachShadow({ mode: 'open' })
     this._shadowRoot.appendChild(template.content.cloneNode(true))
-
-    this.$back = this.shadowRoot.querySelector('back-button')
-    this.$menu = this.shadowRoot.querySelector('menu-button')
-    this.$search = this.shadowRoot.querySelector('search-button')
-  }
-
-  static get observedAttributes() {
-    return ['name', 'value']
-  }
-
-  attributeChangedCallback(name, oldValue, newValue) {
-    this.$back.setAttribute(name, newValue)
-    this.$menu.setAttribute(name, newValue)
-    this.$search.setAttribute(name, newValue)
   }
 }
 
