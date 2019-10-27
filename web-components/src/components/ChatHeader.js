@@ -15,10 +15,25 @@ template.innerHTML = `
         background-color: rgb(130, 64, 163);
     }
 
-    .chat-info-container {
+    .chat-list-header {
         display: flex;
         flex: 1;
         justify-content: center;
+    }
+
+    .clheader-text {
+        color: white;
+    }
+
+    .chat-info-container {
+        display: none;
+        flex: 1;
+        justify-content: center;
+    }
+
+    .icon {
+        height: 35px;
+        width: 35px;
     }
 
     .chat-icon {
@@ -49,11 +64,12 @@ template.innerHTML = `
     }
 
     .burger-button {
-        display: none;
+        display: flex;
         padding: 20px 15px 20px 15px;
     }
     
     .back-button {
+        display: none;
         position: relative;
         padding: 20px 15px 20px 15px;
     }
@@ -72,6 +88,7 @@ template.innerHTML = `
     }
     
     .menu-button {
+        display: none;
         position: relative;
         padding: 20px 25px 20px 25px;
     }
@@ -83,25 +100,28 @@ template.innerHTML = `
     </style>
     <div class="chat-header">
         <div class="burger-button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg>
         </div>
         <div class="back-button">
-        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M2.117 12l7.527 6.235-.644.765-9-7.521 9-7.479.645.764-7.529 6.236h21.884v1h-21.883z"/></svg>
+            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M2.117 12l7.527 6.235-.644.765-9-7.521 9-7.479.645.764-7.529 6.236h21.884v1h-21.883z"/></svg>
+        </div>
+        <div class="chat-list-header">
+            <p class="clheader-text">Messenger</p>
         </div>
         <div class="chat-info-container">
-        <div class="chat-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M20.822 18.096c-3.439-.794-6.641-1.49-5.09-4.418 4.719-8.912 1.251-13.678-3.732-13.678-5.081 0-8.464 4.949-3.732 13.678 1.597 2.945-1.725 3.641-5.09 4.418-2.979.688-3.178 2.143-3.178 4.663l.005 1.241h10.483l.704-3h1.615l.704 3h10.483l.005-1.241c.001-2.52-.198-3.975-3.177-4.663zm-8.231 1.904h-1.164l-.91-2h2.994l-.92 2z"/></svg>
-        </div>
-        <div class="chat-info">
-        <p class="chat-title">Donald</p>
-        <p class="chat-status">last seen 15 minutes ago</p>
-        </div>
+            <div class="chat-icon">
+                <img class="icon"></img>
+            </div>
+            <div class="chat-info">
+                <p class="chat-title">Donald</p>
+                <p class="chat-status">last seen 15 minutes ago</p>
+            </div>
         </div>
         <div class="search-button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7z"/></svg>
         </div>
         <div class="menu-button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 18c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 18c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3z"/></svg>
         </div>
     </div>
 `
@@ -114,22 +134,37 @@ class ChatHeader extends HTMLElement {
 
     this.$back = this._shadowRoot.querySelector('.back-button')
     this.$menu = this._shadowRoot.querySelector('.menu-button')
+    this.$burger = this._shadowRoot.querySelector('.burger-button')
     this.$ciContainer = this._shadowRoot.querySelector('.chat-info-container')
     this.$back.addEventListener('click', this._onClickBack.bind(this))
+    this.$header = this._shadowRoot.querySelector('.chat-list-header')
   }
 
-  // eslint-disable-next-line class-methods-use-this
   _onClickBack(event) {
       event.preventDefault()
       console.log('Click')
       document.querySelector('message-space').style.display = 'none'
       document.querySelector('message-form').style.display = 'none'
       this.$back.style.display = 'none'
-      this._shadowRoot.querySelector('.burger-button').style.display = 'flex'
+      this.$burger.style.display = 'flex'
       this.$menu.style.display = 'none'
       this.$ciContainer.style.display = 'none'
-      document.querySelector('chat-list').style.display = 'flex'
+      this.$header.style.display = 'flex'
+      const chatList = document.querySelector('chat-list')
+      chatList.style.display = 'flex'
+      chatList.chatListUpdate()
+  }
 
+  loadChatHeader(chatid) {
+      const appState = JSON.parse(window.localStorage.getItem('appState'))
+      const thisChat = appState[chatid]
+      this.$back.style.display = 'flex'
+      this.$burger.style.display = 'none'
+      this.$menu.style.display = 'flex'
+      this.$ciContainer.querySelector('.chat-title').textContent = thisChat.name
+      this.$ciContainer.style.display = 'flex'
+      this.$header.style.display = 'none'
+      this._shadowRoot.querySelector('.icon').setAttribute('src', `images/chaticon${chatid}.svg`)
   }
 
 

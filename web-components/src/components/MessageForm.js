@@ -26,11 +26,13 @@ class MessageForm extends HTMLElement {
     this.$form = this._shadowRoot.querySelector('form')
     this.$input = this._shadowRoot.querySelector('form-input')
 
+    this.chatid = 34
+
     this.$form.addEventListener('submit', this._onSubmit.bind(this))
     this.$form.addEventListener('keypress', this._onKeyPress.bind(this))
   }
 
-  messageBase = JSON.parse(window.localStorage.getItem('messageBase'))
+  appState = JSON.parse(window.localStorage.getItem('appState'))
 
   static get observedAttributes() {
     return ['name', 'value', 'placeholder', 'disabled']
@@ -38,6 +40,14 @@ class MessageForm extends HTMLElement {
 
   attributeChangedCallback(name, oldValue, newValue) {
     this.$input.setAttribute(name, newValue)
+  }
+
+  set chatId(value) {
+    this.chatId = value
+  }
+
+  get chatId() {
+    return this.chatid
   }
 
   _onSubmit(event) {
@@ -51,14 +61,16 @@ class MessageForm extends HTMLElement {
         textValue: this.$input.value,
         timeValue: curTime,
       }
+      this.messageBase = this.appState[this.chatid].messageBase
       if (this.messageBase == null) {
         this.messageBase = []
       }
-      this.messageBase.push(message)
+      
+      this.messageBase.push(message)  
 
-      window.localStorage.setItem('messageBase', JSON.stringify(this.messageBase))
+      window.localStorage.setItem('appState', JSON.stringify(this.appState))
       const messageSpace = document.querySelector('message-space')
-      messageSpace.spawnMessage()
+      messageSpace.spawnMessage(this.chatid)
       this.$input.clear()
     }
   }

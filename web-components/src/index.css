@@ -25,15 +25,16 @@ body {
 
 message-space {
     background-color: rgb(245, 245, 245);
-    display: flex;
+    display: none;
     flex: 1;
     flex-direction: column-reverse;
     vertical-align: bottom;
     overflow-y: auto;
+    z-index: 10;
 }
 
 message-form {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: flex-end;
     border-top-style: groove;
@@ -41,7 +42,9 @@ message-form {
 }
 
 chat-list {
-    display: none;
+    display: flex;
     flex-direction: column;
     flex: 1;
+    z-index: 0;
 }
+

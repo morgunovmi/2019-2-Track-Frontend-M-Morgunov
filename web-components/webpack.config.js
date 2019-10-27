@@ -66,7 +66,7 @@ module.exports = {
       template: './index.html',
     }),
     new CopyPlugin([
-      { from: 'images', to: 'build/images'},
+      { from: 'images', to: 'images'},
     ])
   ],
 }
