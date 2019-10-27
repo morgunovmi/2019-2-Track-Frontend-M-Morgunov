@@ -142,7 +142,6 @@ class ChatHeader extends HTMLElement {
 
   _onClickBack(event) {
       event.preventDefault()
-      console.log('Click')
       document.querySelector('message-space').style.display = 'none'
       document.querySelector('message-form').style.display = 'none'
       this.$back.style.display = 'none'

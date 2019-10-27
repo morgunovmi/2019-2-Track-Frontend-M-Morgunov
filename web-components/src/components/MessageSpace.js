@@ -98,7 +98,6 @@ class MessageSpace extends HTMLElement {
     const appState = JSON.parse(window.localStorage.getItem('appState'))
     const thisChat = appState[chatid]
     thisChat.messageBase.forEach(message => {
-      const messageTemplate = this._shadowRoot.querySelector('template')
       this._shadowRoot.prepend(messageTemplate.content.cloneNode(true))
       const thisMessage = this._shadowRoot.querySelector('.message-container')
       thisMessage.querySelector('.message').textContent = message.textValue

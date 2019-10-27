@@ -75,7 +75,6 @@ constructor(id) {
 updateChat() {
     this.appState = JSON.parse(window.localStorage.getItem('appState'))
     const thisChat = this.appState[this.chatid]
-    console.log(thisChat)
     this._shadowRoot.querySelector('.chat-name').textContent = thisChat.name
     this._shadowRoot.querySelector('.last-message').textContent = thisChat.messageBase[thisChat.messageBase.length - 1].textValue
 }

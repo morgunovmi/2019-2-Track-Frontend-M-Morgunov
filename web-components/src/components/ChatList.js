@@ -41,7 +41,6 @@ class ChatList extends HTMLElement {
 
     // eslint-disable-next-line class-methods-use-this
     _onChatClick(chatid) {
-      console.log(`Chat click on ${chatid}`)
       document.querySelector('message-space').loadMessageSpace(chatid)
       document.querySelector('chat-header').loadChatHeader(chatid)
     }
