@@ -6,7 +6,7 @@ template.innerHTML = `
 .message-line {
   display: flex;
   justify-content: flex-end;
-  animation: 0.5s slidein ease-in ease-out;
+  animation: 0.5s slidein ease-in-out;
 }
 
 @keyframes slidein {
