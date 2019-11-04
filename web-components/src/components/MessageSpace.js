@@ -64,8 +64,8 @@ class MessageSpace extends HTMLElement {
       const thisMessage = this._shadowRoot.querySelector('.message-container')
       thisMessage.querySelector('.message').textContent = message.textValue
       thisMessage.querySelector('.time').textContent = message.timeValue
-    })
-  }
+      })
+    }
   }
 
   static get observedAttributes() {
@@ -89,7 +89,6 @@ class MessageSpace extends HTMLElement {
   }
 
   loadMessageSpace(chatid) {
-    console.log(`lms called with ${chatid}`)
     const messageTemplate = this._shadowRoot.querySelector('template')
     const styleElem = this._shadowRoot.querySelector('style')
     while (this._shadowRoot.firstChild !== messageTemplate && this._shadowRoot.firstChild !== styleElem) {
@@ -104,11 +103,11 @@ class MessageSpace extends HTMLElement {
       thisMessage.querySelector('.time').textContent = message.timeValue
     })
     document.querySelector('chat-list').style.display = 'none'
+    document.querySelector('float-button').style.display = 'none'
     document.querySelector('message-space').style.display = 'flex'
     const messageForm = document.querySelector('message-form')
     messageForm.chatid = chatid
     messageForm.style.display = 'flex'
-
   }
 }
 

@@ -97,6 +97,10 @@ template.innerHTML = `
         fill: rgb(243, 222, 255);
     }
 
+    .burger-button:hover svg {
+        fill: rgb(243, 222, 255);
+    }
+
     </style>
     <div class="chat-header">
         <div class="burger-button">
@@ -144,6 +148,7 @@ class ChatHeader extends HTMLElement {
       event.preventDefault()
       document.querySelector('message-space').style.display = 'none'
       document.querySelector('message-form').style.display = 'none'
+      document.querySelector('float-button').style.display = 'flex'
       this.$back.style.display = 'none'
       this.$burger.style.display = 'flex'
       this.$menu.style.display = 'none'
@@ -163,10 +168,12 @@ class ChatHeader extends HTMLElement {
       this.$ciContainer.querySelector('.chat-title').textContent = thisChat.name
       this.$ciContainer.style.display = 'flex'
       this.$header.style.display = 'none'
-      this._shadowRoot.querySelector('.icon').setAttribute('src', `images/chaticon${chatid}.svg`)
+      const iList = document.querySelector('chat-list').iconList
+        if (iList.includes(`images/chaticon${chatid}.svg`))
+            this._shadowRoot.querySelector('.icon').setAttribute('src', `images/chaticon${chatid}.svg`)
+        else 
+            this._shadowRoot.querySelector('.icon').setAttribute('src', `images/chaticonph.png`)
   }
-
-
 }
 
 customElements.define('chat-header', ChatHeader)

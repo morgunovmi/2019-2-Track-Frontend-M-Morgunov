@@ -80,6 +80,10 @@ class MessageForm extends HTMLElement {
       this.$form.dispatchEvent(new Event('submit'))
     }
   }
+
+  updateAppState() {
+    this.appState = JSON.parse(window.localStorage.getItem('appState'))
+  }
 }
 
 customElements.define('message-form', MessageForm)
