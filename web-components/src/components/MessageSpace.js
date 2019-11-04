@@ -6,6 +6,20 @@ template.innerHTML = `
 .message-line {
   display: flex;
   justify-content: flex-end;
+  animation: 0.5s slidein ease-in ease-out;
+}
+
+@keyframes slidein {
+  from {
+    height: 0;
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+
+  }
 }
 
 p.message {
@@ -36,6 +50,7 @@ p.time {
   background-color: rgb(245, 227, 255);
   border-radius: 5px;
   margin: 10px 20px 10px 20px;
+
 }
 
 </style>
