@@ -6,19 +6,31 @@ template.innerHTML = `
 .message-line {
   display: flex;
   justify-content: flex-end;
-  animation: 0.5s slidein ease-in-out;
 }
 
-@keyframes slidein {
+@keyframes slideintext {
   from {
     height: 0;
+    font-size: 0px;
     width: 0;
     opacity: 0;
   }
   to {
-    width: 100%;
     opacity: 1;
+    font-size: 20px;
+  }
+}
 
+@keyframes slideintime {
+  from {
+    height: 0;
+    font-size: 0px;
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    font-size: 12px;
   }
 }
 
@@ -26,10 +38,10 @@ p.message {
   display: flex;
   justify-content: center;
   word-break: break-word;
-  overflow-wrap: break-all;
   max-width: 400px;
   padding: 2px 2px;
   margin: 1px 1px;
+  animation: 0.2s slideintext ease;
 }
 
 p.time {
@@ -40,6 +52,7 @@ p.time {
   margin: 1px 1px;
   font-size: 12px;
   color: rgb(142, 142, 142);
+  animation: 0.2s slideintime ease;
 }
 
 .message-container {
@@ -50,7 +63,16 @@ p.time {
   background-color: rgb(245, 227, 255);
   border-radius: 5px;
   margin: 10px 20px 10px 20px;
+  animate: 0.2s fadein;
+}
 
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 </style>
