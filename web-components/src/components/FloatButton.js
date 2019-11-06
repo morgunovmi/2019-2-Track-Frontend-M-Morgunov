@@ -9,7 +9,7 @@ template.innerHTML = `
 }
 
 .label-container{
-	position: fixed;
+position: fixed;
 	bottom: 48px;
 	right: 105px;
 	display: table;
@@ -31,13 +31,14 @@ template.innerHTML = `
 	height: 60px;
 	bottom: 40px;
 	right: 40px;
-	background-color: rgb(146, 27, 179);
+	background-color: rgb(242, 224, 27);
 	border-radius: 50px;
 	text-align: center;
-    box-shadow: 2px 2px 3px #999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  box-shadow: 2px 2px 3px #999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.2s;
 }
 
 .my-float{
@@ -45,32 +46,54 @@ template.innerHTML = `
 	margin-top: 18px;
 }
 
-.plus {
-    fill: white;
+.pencil {
+    opacity: 0.5;
+    height: 20px;
+    width: 20px;
+    transition: opacity 0.5s ease;
+}
+
+a.float:active img {
+  opacity: 1;
 }
 
 a.float + div.label-container {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s, opacity 0.5s ease;
+  transition: visibility 0.3s, opacity 0.5s ease;
 }
 
 a.float:hover + div.label-container{
   visibility: visible;
-  opacity: 1;
+  opacity: 0.75;
 }
 
-a.float:hover svg {
-    fill: rgb(243, 222, 255);
+a.float:hover {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(242, 224, 27, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(242, 224, 27, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(242, 224, 27, 0);
+  }
+}
+
+a.float:hover img {
+  opacity: 0.75;
 }
 </style>
 
 <a href="#" class="float">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="plus"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg>
+  <img class="pencil" src="images/pencil.svg"></img>
 </a>
 <div class="label-container">
   <div class="label-text">Create chat</div>
-  <i class="fa fa-play label-arrow"></i>
 </div>
 `
 

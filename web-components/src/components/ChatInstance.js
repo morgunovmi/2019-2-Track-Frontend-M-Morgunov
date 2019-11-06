@@ -6,6 +6,8 @@ template.innerHTML = `
     display:flex;
     align-items: center;
     border-bottom: 1px solid rgb(191, 191, 191);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 
 .text-info {
@@ -46,7 +48,7 @@ template.innerHTML = `
     padding: 4px 4px;
     margin: 1px 1px;
     font-size: 15px;
-    max-width: 750px;
+    max-width: 55vw;
     white-space: nowrap;
     overflow:hidden;
     text-overflow: ellipsis;
@@ -61,6 +63,13 @@ template.innerHTML = `
 p:empty:not(:focus)::before {
     content: attr(data-placeholder);
   }
+
+.chat:hover {
+    background-color: rgb(230, 230, 230);
+}
+.chat:active {
+    background-color: rgb(200, 200, 200);
+}
 
 </style>
 

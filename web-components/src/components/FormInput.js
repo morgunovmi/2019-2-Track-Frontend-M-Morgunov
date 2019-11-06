@@ -23,10 +23,12 @@ template.innerHTML = `
           background-color: white;
           position: relative;
           padding: 20px 15px 20px 15px;
+          cursor: pointer;
         }
 
         .attachment-button svg {
           fill: rgb(181, 181, 181);
+          transition: fill 0.3s;
         }
 
         .attachment-button:hover svg {

@@ -30,7 +30,9 @@ message-space {
     flex-direction: column-reverse;
     vertical-align: bottom;
     overflow-y: auto;
+    overflow-x: hidden;
     z-index: 10;
+    transition: display 0.3s;
 }
 
 message-form {

@@ -18,11 +18,12 @@ template.innerHTML = `
     .chat-list-header {
         display: flex;
         flex: 1;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .clheader-text {
         color: white;
+        padding-left: 20px;
     }
 
     .chat-info-container {
@@ -59,55 +60,66 @@ template.innerHTML = `
     .chat-status {
         text-align: center;
         font-size: 10px;
-        color: rgb(243, 222, 255);
+        color: rgb(236, 161, 255);
         margin: 0px;
+    }
+    svg {
+        fill: white;
+        transition: fill 0.3s ease;
     }
 
     .burger-button {
         display: flex;
-        padding: 20px 15px 20px 15px;
+        padding: 20px 15px 20px 20px;
+        cursor: pointer;
     }
     
     .back-button {
         display: none;
         position: relative;
-        padding: 20px 15px 20px 15px;
+        padding: 20px 15px 20px 20px;
+        transition: fill 0.3s;
+        cursor: pointer;
     }
     
     .back-button:hover svg {
-        fill: rgb(243, 222, 255);
+        fill: rgb(236, 161, 255);
     }
     
     .search-button {
         position: relative;
         padding: 20px 25px 20px 25px;
+        transition: fill 0.3s;
+        cursor: pointer;
     }
     
     .search-button:hover svg {
-        fill: rgb(243, 222, 255);
+        fill: rgb(236, 161, 255);
     }
     
     .menu-button {
         display: none;
         position: relative;
         padding: 20px 25px 20px 25px;
+        transition: fill 0.3s;
+        cursor: pointer;
     }
     
     .menu-button:hover svg {
-        fill: rgb(243, 222, 255);
+        fill: rgb(236, 161, 255);
     }
 
     .burger-button:hover svg {
-        fill: rgb(243, 222, 255);
+        fill: rgb(236, 161, 255);
     }
 
     </style>
     <div class="chat-header">
         <div class="burger-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg>
         </div>
         <div class="back-button">
-            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M2.117 12l7.527 6.235-.644.765-9-7.521 9-7.479.645.764-7.529 6.236h21.884v1h-21.883z"/></svg>
+            <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M2.117 12l7.527 6.235-.644.765-9-7.521 9-7.479.645.764-7.529 6.236h21.884v1h-21.883z"/></svg>
         </div>
         <div class="chat-list-header">
             <p class="clheader-text">Messenger</p>
@@ -122,10 +134,10 @@ template.innerHTML = `
             </div>
         </div>
         <div class="search-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7z"/></svg>
         </div>
         <div class="menu-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 18c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12 18c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3z"/></svg>
         </div>
     </div>
 `
