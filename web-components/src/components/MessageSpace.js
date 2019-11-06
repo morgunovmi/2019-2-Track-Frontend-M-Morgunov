@@ -55,16 +55,17 @@ class MessageSpace extends HTMLElement {
     this._shadowRoot = this.attachShadow({ mode: 'open' })
     this._shadowRoot.appendChild(template.content.cloneNode(true))
 
-    const messageBase = JSON.parse(window.localStorage.getItem('messageBase'))
-    if (messageBase != null) {
-    messageBase.forEach(message => {
+    const appState = JSON.parse(window.localStorage.getItem('appState'))
+    const thisChat = appState[34]
+    if (thisChat.messageBase != null) {
+    thisChat.messageBase.forEach(message => {
       const messageTemplate = this._shadowRoot.querySelector('template')
       this._shadowRoot.prepend(messageTemplate.content.cloneNode(true))
       const thisMessage = this._shadowRoot.querySelector('.message-container')
       thisMessage.querySelector('.message').textContent = message.textValue
       thisMessage.querySelector('.time').textContent = message.timeValue
-    })
-  }
+      })
+    }
   }
 
   static get observedAttributes() {
@@ -75,8 +76,9 @@ class MessageSpace extends HTMLElement {
     this.$input.setAttribute(name, newValue)
   }
 
-  spawnMessage() {
-    const messageBase = JSON.parse(window.localStorage.getItem('messageBase'))
+  spawnMessage(chatid) {
+    const appState = JSON.parse(window.localStorage.getItem('appState'))
+    const {messageBase} = appState[chatid]
     const testMessage = messageBase[messageBase.length - 1]
 
     const messageTemplate = this._shadowRoot.querySelector('template')
@@ -84,6 +86,28 @@ class MessageSpace extends HTMLElement {
     const thisMessage = this._shadowRoot.querySelector('.message-container')
     thisMessage.querySelector('.message').textContent = testMessage.textValue
     thisMessage.querySelector('.time').textContent = testMessage.timeValue
+  }
+
+  loadMessageSpace(chatid) {
+    const messageTemplate = this._shadowRoot.querySelector('template')
+    const styleElem = this._shadowRoot.querySelector('style')
+    while (this._shadowRoot.firstChild !== messageTemplate && this._shadowRoot.firstChild !== styleElem) {
+        this._shadowRoot.removeChild(this._shadowRoot.firstChild)
+    }
+    const appState = JSON.parse(window.localStorage.getItem('appState'))
+    const thisChat = appState[chatid]
+    thisChat.messageBase.forEach(message => {
+      this._shadowRoot.prepend(messageTemplate.content.cloneNode(true))
+      const thisMessage = this._shadowRoot.querySelector('.message-container')
+      thisMessage.querySelector('.message').textContent = message.textValue
+      thisMessage.querySelector('.time').textContent = message.timeValue
+    })
+    document.querySelector('chat-list').style.display = 'none'
+    document.querySelector('float-button').style.display = 'none'
+    document.querySelector('message-space').style.display = 'flex'
+    const messageForm = document.querySelector('message-form')
+    messageForm.chatid = chatid
+    messageForm.style.display = 'flex'
   }
 }
 

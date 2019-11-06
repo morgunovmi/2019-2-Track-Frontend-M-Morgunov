@@ -3,6 +3,7 @@ const path = require('path')
 
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 // eslint-disable-next-line no-unused-vars
 const webpack = require('webpack')
 
@@ -64,5 +65,8 @@ module.exports = {
       filename: 'index.html',
       template: './index.html',
     }),
+    new CopyPlugin([
+      { from: 'images', to: 'images'},
+    ])
   ],
 }
