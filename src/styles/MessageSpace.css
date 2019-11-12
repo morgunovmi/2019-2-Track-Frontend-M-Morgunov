@@ -1,0 +1,10 @@
+.space {
+	background-color: rgb(245, 245, 245);
+	display: flex;
+	flex: 1;
+	flex-direction: column-reverse;
+	vertical-align: bottom;
+	overflow-y: auto;
+	overflow-x: hidden;
+	transition: display 0.3s;
+}

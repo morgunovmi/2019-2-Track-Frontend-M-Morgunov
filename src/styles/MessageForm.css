@@ -1,0 +1,33 @@
+input {
+	padding: 20px 15px 20px 15px;
+	outline: none;
+	border: 0;
+	width: calc(100% - 2px);
+}
+
+:host {
+	display: inline-block;
+	border: 0px solid rgba(25, 25, 25, 0.32);
+}
+
+.container {
+	display: flex;
+	border-top-style: groove;
+	border-width: 1px;
+}
+
+.attachmentButton {
+	background-color: white;
+	position: relative;
+	padding: 20px 15px 20px 15px;
+	cursor: pointer;
+}
+
+.attachmentButton svg {
+	fill: rgb(181, 181, 181);
+	transition: fill 0.3s;
+}
+
+.attachmentButton:hover svg {
+	fill: black;
+}
