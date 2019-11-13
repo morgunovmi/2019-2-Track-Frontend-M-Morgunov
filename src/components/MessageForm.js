@@ -1,29 +1,25 @@
 import React from 'react';
 import styles from '../styles/MessageForm.css';
-import MessageSpace from './MessageSpace.js';
 
 export default class MessageForm extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { value: '' };
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleChange(event) {
-		this.setState({ value: event.target.value });
+		this.props.onFormChange(event.target.value);
 	}
 
 	handleSubmit(event) {
-		if (this.state.value !== '') {
-			this.setState({ value: '' });
-			console.log('submit');
-		}
+		this.props.onMessageSubmit(event.target.value);
 		event.preventDefault();
 	}
 
 	render() {
+		const formValue = this.props.formValue;
 		return (
 			<form
 				className="container"
@@ -32,7 +28,7 @@ export default class MessageForm extends React.Component {
 			>
 				<input
 					type="text"
-					value={this.state.value}
+					value={formValue}
 					onChange={this.handleChange}
 					placeholder="Введите сообщение"
 				/>

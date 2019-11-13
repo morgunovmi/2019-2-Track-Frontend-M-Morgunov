@@ -4,8 +4,7 @@ import { createBrowserHistory } from 'history';
 import styled from '@emotion/styled';
 import Header from '../components/Header';
 import CounterContainer from '../containers/CounterContainer';
-import MessageForm from '../components/MessageForm';
-import MessageSpace from '../components/MessageSpace';
+import PageContainer from '../components/PageContainer';
 
 const Container = styled.div`
 	text-align: center;
@@ -21,12 +20,7 @@ function Routes() {
 	return (
 		<Router history={history}>
 			<Container>
-				<Header />
-				<Switch>
-					<Route path="/" component={CounterContainer} />
-				</Switch>
-				<MessageSpace />
-				<MessageForm />
+				<PageContainer />
 			</Container>
 		</Router>
 	);
