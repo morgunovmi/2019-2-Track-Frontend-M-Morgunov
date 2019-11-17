@@ -1,10 +1,9 @@
 import React from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import styled from '@emotion/styled';
-import Header from '../components/Header';
-import CounterContainer from '../containers/CounterContainer';
 import PageContainer from '../components/PageContainer';
+import Header from '../components/Header';
 
 const Container = styled.div`
 	text-align: center;
@@ -20,6 +19,7 @@ function Routes() {
 	return (
 		<Router history={history}>
 			<Container>
+				<Header />
 				<PageContainer />
 			</Container>
 		</Router>

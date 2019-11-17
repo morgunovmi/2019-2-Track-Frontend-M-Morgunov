@@ -2,7 +2,6 @@ import React from 'react';
 import MessageSpace from './MessageSpace';
 import MessageForm from './MessageForm';
 import styled from '@emotion/styled';
-import { thisExpression } from 'babel-types';
 
 const Container = styled.div`
 	text-align: center;
@@ -30,7 +29,7 @@ export default class PageContainer extends React.Component {
 	handleMessageSubmit() {
 		const curDate = new Date();
 		const curTime = `${curDate.getHours()}:${curDate.getMinutes()}`;
-		const mid = curDate.getMilliseconds() / 1000;
+		const mid = curDate.getMilliseconds();
 
 		this.setState({
 			messageBase: this.state.messageBase.concat({
