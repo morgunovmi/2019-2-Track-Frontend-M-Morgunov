@@ -10,7 +10,6 @@ const Container = styled.div`
 	text-align: center;
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
 	margin: 0;
 `;
 
@@ -20,10 +19,26 @@ function Routes() {
 	return (
 		<Router history={history}>
 			<Container>
-				<Header />
 				<Switch>
-					<Route path="/chats" component={ChatList} />
-					<Route path="/:id" component={ChatContainer} />
+					<Route
+						path="/chats"
+						exact
+						render={(props) => (
+							<div>
+								<Header {...props} type="ChatList" />
+								<ChatList {...props} />
+							</div>
+						)}
+					/>
+					<Route
+						path="/chats/:id"
+						render={(props) => (
+							<div>
+								<Header {...props} type="ChatPage" />
+								<ChatContainer {...props} />
+							</div>
+						)}
+					/>
 				</Switch>
 			</Container>
 		</Router>

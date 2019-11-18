@@ -2,8 +2,16 @@ import React from 'react';
 import backStyles from '../../styles/buttons/BackButton.css';
 
 export default function BackButton(props) {
+	function handleBackClick() {
+		let history = props.history;
+		history.push('/chats');
+	}
 	return (
-		<div className="back-button" style={backStyles.BackButton}>
+		<div
+			className="back-button"
+			style={backStyles.BackButton}
+			onClick={handleBackClick}
+		>
 			<svg
 				width="20"
 				height="20"

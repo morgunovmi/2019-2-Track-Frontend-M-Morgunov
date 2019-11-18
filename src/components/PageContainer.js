@@ -26,7 +26,6 @@ class PageContainer extends React.Component {
 		this.state = {};
 		this.chats = JSON.parse(window.localStorage.getItem('chats'));
 		this.state.messageBase = this.chats[this.id].messageBase;
-		console.log(this.state.messageBase);
 		this.name = this.chats[this.id].name;
 		this.state.formValue = '';
 		this.handleMessageSubmit = this.handleMessageSubmit.bind(this);

@@ -1,5 +1,5 @@
 .back-button {
-	display: none;
+	display: flex;
 	position: relative;
 	padding: 20px 15px 20px 20px;
 	transition: fill 0.3s;

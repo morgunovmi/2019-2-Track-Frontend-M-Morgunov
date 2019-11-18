@@ -54,7 +54,7 @@ export default class ChatList extends React.Component {
 
 	handleChatClick(id) {
 		let history = this.props.history;
-		history.push(`/${id}`);
+		history.push(`/chats/${id}`);
 	}
 
 	handleButtonClick() {
@@ -75,6 +75,7 @@ export default class ChatList extends React.Component {
 									chatName={chat.name}
 									lastMessage=""
 									lastMessageTime=""
+									chatid={id}
 								/>
 							</div>
 						);

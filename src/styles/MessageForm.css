@@ -5,11 +5,6 @@ input {
 	width: calc(100% - 2px);
 }
 
-:host {
-	display: inline-block;
-	border: 0px solid rgba(25, 25, 25, 0.32);
-}
-
 .container {
 	display: flex;
 	border-top-style: groove;

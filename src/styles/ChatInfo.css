@@ -1,5 +1,5 @@
 .chat-info-container {
-	display: none;
+	display: flex;
 	flex: 1;
 	justify-content: center;
 	align-items: center;
@@ -28,12 +28,13 @@
 	flex-grow: 1;
 	text-align: left;
 	margin: 0px;
+	font-size: 18px;
 }
 
-.chat-status {
+.online-status {
 	text-align: center;
-	font-size: 10px;
+	font-size: 13px;
 	color: rgb(236, 161, 255);
 	margin: 0px;
-	padding: 0px;
+	padding-top: 3px;
 }
