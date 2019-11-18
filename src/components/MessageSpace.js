@@ -6,8 +6,8 @@ function Message(props) {
 	return (
 		<div className="message-line" style={messageStyles.Message}>
 			<div className="message-container">
-				<p className="message">{props.textValue}</p>
-				<p className="time">{props.timeValue}</p>
+				<p className="message">{props.content}</p>
+				<p className="time">{props.addedAt}</p>
 			</div>
 		</div>
 	);
@@ -23,8 +23,8 @@ export default function MessageSpace(props) {
 				.map((item) => (
 					<Message
 						key={item.id}
-						textValue={item.textValue}
-						timeValue={item.timeValue}
+						content={item.content}
+						addedAt={item.addedAt}
 					/>
 				))}
 		</div>

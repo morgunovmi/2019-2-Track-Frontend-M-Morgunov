@@ -5,7 +5,7 @@ export default function ChatInfo(props) {
 	return (
 		<div className="chat-info-container" style={infoStyles.ChatInfo}>
 			<div className="chat-icon">
-				<img className="icon"></img>
+				<img className="icon" alt=""></img>
 			</div>
 			<div className="chat-info">
 				<p className="chat-title">Donald</p>

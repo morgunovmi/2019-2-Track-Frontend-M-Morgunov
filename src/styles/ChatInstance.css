@@ -1,0 +1,70 @@
+.chat {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid rgb(191, 191, 191);
+	transition: background-color 0.3s ease;
+	cursor: pointer;
+}
+
+.text-info {
+	flex: 1;
+}
+
+.chat-status {
+	display: flex;
+	padding: 10px;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.chat-icon {
+	display: flex;
+	padding: 20px;
+}
+
+.icon {
+	height: 50px;
+	width: 50px;
+}
+
+.chat-name {
+	padding: 4px 4px;
+	margin: 1px 1px;
+	text-align: start;
+}
+
+.time {
+	color: rgb(142, 142, 142);
+	padding: 4px 4px;
+	margin: 1px 1px;
+	font-size: 15px;
+}
+
+.last-message {
+	color: rgb(142, 142, 142);
+	padding: 4px 4px;
+	margin: 1px 1px;
+	font-size: 15px;
+	max-width: 55vw;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: start;
+}
+
+.message-status {
+	height: 20px;
+	width: 20px;
+	align-self: center;
+}
+
+p:empty:not(:focus)::before {
+	content: attr(data-placeholder);
+}
+
+.chat:hover {
+	background-color: rgb(230, 230, 230);
+}
+.chat:active {
+	background-color: rgb(200, 200, 200);
+}

@@ -1,9 +1,10 @@
 import React from 'react';
-import { Router } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import styled from '@emotion/styled';
-import PageContainer from '../components/PageContainer';
 import Header from '../components/Header';
+import ChatList from '../components/ChatList';
+import ChatContainer from '../components/PageContainer';
 
 const Container = styled.div`
 	text-align: center;
@@ -20,7 +21,10 @@ function Routes() {
 		<Router history={history}>
 			<Container>
 				<Header />
-				<PageContainer />
+				<Switch>
+					<Route path="/chats" component={ChatList} />
+					<Route path="/:id" component={ChatContainer} />
+				</Switch>
 			</Container>
 		</Router>
 	);
