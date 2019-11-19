@@ -1,8 +1,9 @@
 import React from 'react';
-import MessageSpace from './MessageSpace';
-import MessageForm from './MessageForm';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { useParams } from 'react-router-dom';
+import MessageSpace from './MessageSpace';
+import MessageForm from './MessageForm';
 
 const Container = styled.div`
 	text-align: center;
@@ -14,23 +15,30 @@ const Container = styled.div`
 
 export default function ChatContainer(props) {
 	const { id } = useParams();
-	return <PageContainer chatid={id} />;
+	return <PageContainer chatid={parseInt(id, 10)} />;
 }
 
 class PageContainer extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.id = this.props.chatid;
+		const { chatid } = this.props;
 
 		this.state = {};
 		this.chats = JSON.parse(window.localStorage.getItem('chats'));
-		this.state.messageBase = this.chats[this.id].messageBase;
-		this.name = this.chats[this.id].name;
+		this.state.messageBase = this.chats[chatid].messageBase;
+		this.name = this.chats[chatid].name;
 		this.state.formValue = '';
 		this.handleMessageSubmit = this.handleMessageSubmit.bind(this);
 		this.handleFormChange = this.handleFormChange.bind(this);
 		this.componentDidUpdate = this.componentDidUpdate.bind(this);
+	}
+
+	componentDidUpdate() {
+		const { chatid } = this.props;
+		const { messageBase } = this.state;
+		this.chats[chatid].messageBase = messageBase;
+		window.localStorage.setItem('chats', JSON.stringify(this.chats));
 	}
 
 	handleMessageSubmit() {
@@ -38,19 +46,15 @@ class PageContainer extends React.Component {
 		const curTime = `${curDate.getHours()}:${curDate.getMinutes()}`;
 		const mid = curDate.getMilliseconds();
 
+		const { messageBase, formValue } = this.state;
 		this.setState({
-			messageBase: this.state.messageBase.concat({
+			messageBase: messageBase.concat({
 				id: mid,
-				content: this.state.formValue,
+				content: formValue,
 				addedAt: curTime,
 			}),
 			formValue: '',
 		});
-	}
-
-	componentDidUpdate() {
-		this.chats[this.id].messageBase = this.state.messageBase;
-		window.localStorage.setItem('chats', JSON.stringify(this.chats));
 	}
 
 	handleFormChange(value) {
@@ -58,18 +62,23 @@ class PageContainer extends React.Component {
 	}
 
 	render() {
+		const { messageBase, formValue } = this.state;
 		return (
 			<Container>
 				<MessageSpace
 					onMessageSubmit={this.handleMessageSubmit}
-					messageBase={this.state.messageBase}
+					messageBase={messageBase}
 				/>
 				<MessageForm
 					onMessageSubmit={this.handleMessageSubmit}
 					onFormChange={this.handleFormChange}
-					formValue={this.state.formValue}
+					formValue={formValue}
 				/>
 			</Container>
 		);
 	}
 }
+
+PageContainer.propTypes = {
+	chatid: PropTypes.number.isRequired,
+};

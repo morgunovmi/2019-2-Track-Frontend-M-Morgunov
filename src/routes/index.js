@@ -23,19 +23,19 @@ function Routes() {
 					<Route
 						path="/chats"
 						exact
-						render={(props) => (
+						render={() => (
 							<div>
-								<Header {...props} type="ChatList" />
-								<ChatList {...props} />
+								<Header history={history} type="ChatList" />
+								<ChatList history={history} />
 							</div>
 						)}
 					/>
 					<Route
 						path="/chats/:id"
-						render={(props) => (
+						render={() => (
 							<div>
-								<Header {...props} type="ChatPage" />
-								<ChatContainer {...props} />
+								<Header history={history} type="ChatPage" />
+								<ChatContainer />
 							</div>
 						)}
 					/>

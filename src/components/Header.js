@@ -1,17 +1,17 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import headerStyles from '../styles/Header.css';
 import BackButton from './buttons/BackButton';
 import BurgerButton from './buttons/BurgerButton';
 import ChatInfo from './ChatInfo';
 import SearchButton from './buttons/SearchButton';
 import MenuButton from './buttons/MenuButton';
-import { useParams } from 'react-router-dom';
 
-function Header(props) {
+function Header({ type, history }) {
 	const { id } = useParams();
 	const chats = JSON.parse(window.localStorage.getItem('chats'));
 	const thisChat = chats[id];
-	if (props.type === 'ChatList') {
+	if (type === 'ChatList') {
 		return (
 			<div className="chat-header" style={headerStyles.Header}>
 				<BurgerButton />
@@ -21,10 +21,11 @@ function Header(props) {
 				<SearchButton />
 			</div>
 		);
-	} else if (props.type === 'ChatPage') {
+	}
+	if (type === 'ChatPage') {
 		return (
 			<div className="chat-header" style={headerStyles.Header}>
-				<BackButton history={props.history} />
+				<BackButton history={history} />
 				<ChatInfo name={thisChat.name} chatid={id} />
 				<SearchButton />
 				<MenuButton />

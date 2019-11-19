@@ -1,37 +1,44 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { history as historyPropTypes } from 'history-prop-types';
 import clStyles from '../styles/ChatList.css';
 import FloatButton from './buttons/FloatButton';
 import tmpChats from '../tmpChats';
 import ChatInstance from './ChatInstance';
 
-export default class ChatList extends React.Component {
+class ChatList extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {};
 		this.state.chats = JSON.parse(window.localStorage.getItem('chats'));
 
-		if (this.state.chats == null) {
+		let { chats } = this.state;
+
+		if (chats == null) {
 			window.localStorage.setItem('chats', JSON.stringify(tmpChats));
-			this.state.chats = tmpChats;
+			chats = tmpChats;
 		}
 
 		this.createNewChat = this.createNewChat.bind(this);
 		this.handleButtonClick = this.handleButtonClick.bind(this);
 		this.componentDidUpdate = this.componentDidUpdate.bind(this);
 		this.handleChatClick = this.handleChatClick.bind(this);
+		this.handleKeyDown = this.handleKeyDown.bind(this);
 	}
 
 	componentDidUpdate() {
-		window.localStorage.setItem('chats', JSON.stringify(this.state.chats));
+		const { chats } = this.state;
+		window.localStorage.setItem('chats', JSON.stringify(chats));
 	}
 
 	createNewChat(chatName) {
+		let { chats } = this.state;
 		let chatid = Math.floor(Math.random() * 10000) + 1;
 		let isAvailable = true;
 		do {
 			// eslint-disable-next-line no-loop-func
-			Object.keys(this.state.chats).forEach((id) => {
+			Object.keys(chats).forEach((id) => {
 				if (id === chatid) {
 					isAvailable = false;
 				}
@@ -46,14 +53,14 @@ export default class ChatList extends React.Component {
 			messageBase: [],
 		};
 		this.setState((prevState) => {
-			let chats = Object.assign({}, prevState.chats);
+			chats = { ...prevState.chats };
 			chats[chatid] = chatObject;
 			return { chats };
 		});
 	}
 
 	handleChatClick(id) {
-		let history = this.props.history;
+		const { history } = this.props;
 		history.push(`/chats/${id}`);
 	}
 
@@ -62,15 +69,31 @@ export default class ChatList extends React.Component {
 		if (chatName !== '' && chatName != null) this.createNewChat(chatName);
 	}
 
+	handleKeyDown(event) {
+		if (event.key === 'Enter') {
+			const id = event.target.getAttribute('id');
+			const { history } = this.props;
+			history.push(`/chats/${id}`);
+		}
+	}
+
 	render() {
+		const { chats } = this.state;
 		return (
 			<div className="list" style={clStyles.ChatLIst}>
-				{Object.keys(this.state.chats).map((id) => {
-					const chat = this.state.chats[id];
+				{Object.keys(chats).map((id) => {
+					const chat = chats[id];
 					const lMessage = chat.messageBase[chat.messageBase.length - 1];
 					if (lMessage === undefined) {
 						return (
-							<div key={id} onClick={() => this.handleChatClick(id)}>
+							<div
+								key={id}
+								onClick={() => this.handleChatClick(id)}
+								onKeyDown={this.handleKeyDown}
+								role="link"
+								tabIndex={0}
+								id={id}
+							>
 								<ChatInstance
 									chatName={chat.name}
 									lastMessage=""
@@ -79,20 +102,32 @@ export default class ChatList extends React.Component {
 								/>
 							</div>
 						);
-					} else {
-						return (
-							<div key={id} onClick={() => this.handleChatClick(id)}>
-								<ChatInstance
-									chatName={chat.name}
-									lastMessage={lMessage.content}
-									lastMessageTime={lMessage.addedAt}
-								/>
-							</div>
-						);
 					}
+					return (
+						<div
+							key={id}
+							onClick={() => this.handleChatClick(id)}
+							onKeyDown={this.handleKeyDown}
+							role="link"
+							tabIndex={0}
+							id={id}
+						>
+							<ChatInstance
+								chatName={chat.name}
+								lastMessage={lMessage.content}
+								lastMessageTime={lMessage.addedAt}
+							/>
+						</div>
+					);
 				})}
 				<FloatButton onButtonClick={this.handleButtonClick} />
 			</div>
 		);
 	}
 }
+
+ChatList.propTypes = {
+	history: PropTypes.shape(historyPropTypes).isRequired,
+};
+
+export default ChatList;

@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../styles/MessageForm.css';
 
-export default class MessageForm extends React.Component {
+class MessageForm extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -10,16 +11,18 @@ export default class MessageForm extends React.Component {
 	}
 
 	handleChange(event) {
-		this.props.onFormChange(event.target.value);
+		const { onFormChange } = this.props;
+		onFormChange(event.target.value);
 	}
 
 	handleSubmit(event) {
-		this.props.onMessageSubmit(event.target.value);
+		const { onMessageSubmit } = this.props;
+		onMessageSubmit(event.target.value);
 		event.preventDefault();
 	}
 
 	render() {
-		const formValue = this.props.formValue;
+		const { formValue } = this.props;
 		return (
 			<form
 				className="container"
@@ -46,3 +49,11 @@ export default class MessageForm extends React.Component {
 		);
 	}
 }
+
+MessageForm.propTypes = {
+	onFormChange: PropTypes.func.isRequired,
+	onMessageSubmit: PropTypes.func.isRequired,
+	formValue: PropTypes.string.isRequired,
+};
+
+export default MessageForm;
