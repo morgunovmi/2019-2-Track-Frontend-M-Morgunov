@@ -21,7 +21,7 @@ function Routes() {
 			<Container>
 				<Switch>
 					<Route
-						path="/chats"
+						path="/"
 						exact
 						render={() => (
 							<div>
@@ -31,7 +31,7 @@ function Routes() {
 						)}
 					/>
 					<Route
-						path="/chats/:id"
+						path="/:id"
 						render={() => (
 							<div>
 								<Header history={history} type="ChatPage" />
