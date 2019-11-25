@@ -23,12 +23,12 @@ export const history = createBrowserHistory();
 
 function Routes() {
 	return (
-		<Router history={history}>
+		<Router basename={process.env.PUBLIC_URL} history={history}>
 			<Container>
 				<Switch>
 					<Route
-						path="/"
 						exact
+						path="/"
 						render={() => (
 							<div>
 								<Header history={history} type="ChatList" />
