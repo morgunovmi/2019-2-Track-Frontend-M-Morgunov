@@ -62,7 +62,7 @@ class ChatList extends React.Component {
 
 	handleChatClick(id) {
 		const { history } = this.props;
-		history.push(`${process.env.PUBLIC_URL + '/' + id}`);
+		history.push(`${process.env.PUBLIC_URL}/${id}`);
 	}
 
 	handleButtonClick() {
@@ -74,7 +74,7 @@ class ChatList extends React.Component {
 		if (event.key === 'Enter') {
 			const id = event.target.getAttribute('id');
 			const { history } = this.props;
-			history.push(`${process.env.PUBLIC_URL + '/' + id}`);
+			history.push(`${process.env.PUBLIC_URL}/${id}`);
 		}
 	}
 
