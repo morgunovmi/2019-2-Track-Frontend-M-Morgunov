@@ -23,7 +23,7 @@ export const history = createBrowserHistory();
 
 function Routes() {
 	return (
-		<Router history={history}>
+		<Router history={history} basename="/chats">
 			<Container>
 				<Switch>
 					<Route
