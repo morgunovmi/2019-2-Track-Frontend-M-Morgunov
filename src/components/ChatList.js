@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { history as historyPropTypes } from 'history-prop-types';
+import { withRouter } from 'react-router-dom';
 import clStyles from '../styles/ChatList.css';
 import FloatButton from './buttons/FloatButton';
 import tmpChats from '../tmpChats';
@@ -61,7 +62,7 @@ class ChatList extends React.Component {
 
 	handleChatClick(id) {
 		const { history } = this.props;
-		history.push(`/${id}`);
+		history.push(`${process.env.PUBLIC_URL + '/' + id}`);
 	}
 
 	handleButtonClick() {
@@ -73,7 +74,7 @@ class ChatList extends React.Component {
 		if (event.key === 'Enter') {
 			const id = event.target.getAttribute('id');
 			const { history } = this.props;
-			history.push(`/chats/${id}`);
+			history.push(`${process.env.PUBLIC_URL + '/' + id}`);
 		}
 	}
 
@@ -130,4 +131,4 @@ ChatList.propTypes = {
 	history: PropTypes.shape(historyPropTypes).isRequired,
 };
 
-export default ChatList;
+export default withRouter(ChatList);

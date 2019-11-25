@@ -1,10 +1,10 @@
 import React from 'react';
 import backStyles from '../../styles/buttons/BackButton.css';
+import { withRouter } from 'react-router-dom';
 
-export default function BackButton(props) {
+function BackButton(props) {
 	function handleBackClick() {
-		let history = props.history;
-		history.push('/');
+		props.history.push(process.env.PUBLIC_URL);
 	}
 	return (
 		<div
@@ -24,3 +24,5 @@ export default function BackButton(props) {
 		</div>
 	);
 }
+
+export default withRouter(BackButton);

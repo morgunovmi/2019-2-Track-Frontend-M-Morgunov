@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import styled from '@emotion/styled';
 import Header from '../components/Header';
@@ -37,7 +37,7 @@ function Routes() {
 						)}
 					/>
 					<Route
-						path="/:id"
+						path={process.env.PUBLIC_URL + '/:id'}
 						render={() => (
 							<NewContainer>
 								<Header history={history} type="ChatPage" />
