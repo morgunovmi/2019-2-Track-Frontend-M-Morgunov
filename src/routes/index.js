@@ -37,7 +37,7 @@ function Routes() {
 						)}
 					/>
 					<Route
-						path={process.env.PUBLIC_URL + '/:id'}
+						path={`${process.env.PUBLIC_URL}/:id`}
 						render={() => (
 							<NewContainer>
 								<Header history={history} type="ChatPage" />
