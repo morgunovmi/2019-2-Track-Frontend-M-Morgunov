@@ -28,7 +28,7 @@ function Routes() {
 				<Switch>
 					<Route
 						exact
-						path="/"
+						path={process.env.PUBLIC_URL}
 						render={() => (
 							<div>
 								<Header history={history} type="ChatList" />
