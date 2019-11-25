@@ -4,7 +4,7 @@ import backStyles from '../../styles/buttons/BackButton.css';
 export default function BackButton(props) {
 	function handleBackClick() {
 		let history = props.history;
-		history.push('/chats');
+		history.push('/');
 	}
 	return (
 		<div

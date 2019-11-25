@@ -23,11 +23,11 @@ export const history = createBrowserHistory();
 
 function Routes() {
 	return (
-		<Router history={history} basename="/chats">
+		<Router history={history}>
 			<Container>
 				<Switch>
 					<Route
-						path="/chats"
+						path="/"
 						exact
 						render={() => (
 							<div>
@@ -37,7 +37,7 @@ function Routes() {
 						)}
 					/>
 					<Route
-						path="/chats/:id"
+						path="/:id"
 						render={() => (
 							<NewContainer>
 								<Header history={history} type="ChatPage" />
