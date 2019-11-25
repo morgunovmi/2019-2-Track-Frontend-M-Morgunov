@@ -13,6 +13,12 @@ const Container = styled.div`
 	margin: 0;
 `;
 
+const NewContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+`;
+
 export const history = createBrowserHistory();
 
 function Routes() {
@@ -21,7 +27,7 @@ function Routes() {
 			<Container>
 				<Switch>
 					<Route
-						path="/"
+						path="/chats"
 						exact
 						render={() => (
 							<div>
@@ -31,12 +37,12 @@ function Routes() {
 						)}
 					/>
 					<Route
-						path="/:id"
+						path="/chats/:id"
 						render={() => (
-							<div>
+							<NewContainer>
 								<Header history={history} type="ChatPage" />
 								<ChatContainer />
-							</div>
+							</NewContainer>
 						)}
 					/>
 				</Switch>

@@ -61,7 +61,7 @@ class ChatList extends React.Component {
 
 	handleChatClick(id) {
 		const { history } = this.props;
-		history.push(`/${id}`);
+		history.push(`/chats/${id}`);
 	}
 
 	handleButtonClick() {
