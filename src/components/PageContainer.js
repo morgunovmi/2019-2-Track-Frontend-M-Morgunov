@@ -41,20 +41,22 @@ class PageContainer extends React.Component {
 		window.localStorage.setItem('chats', JSON.stringify(this.chats));
 	}
 
-	handleMessageSubmit() {
-		const curDate = new Date();
-		const curTime = `${curDate.getHours()}:${curDate.getMinutes()}`;
-		const mid = curDate.getMilliseconds();
-
+	handleMessageSubmit(event) {
 		const { messageBase, formValue } = this.state;
-		this.setState({
-			messageBase: messageBase.concat({
-				id: mid,
-				content: formValue,
-				addedAt: curTime,
-			}),
-			formValue: '',
-		});
+		if (formValue.replace(/\s/g, '').length) {
+			const curDate = new Date();
+			const curTime = `${curDate.getHours()}:${curDate.getMinutes()}`;
+			const mid = curDate.getMilliseconds();
+
+			this.setState({
+				messageBase: messageBase.concat({
+					id: mid,
+					content: formValue,
+					addedAt: curTime,
+				}),
+				formValue: '',
+			});
+		}
 	}
 
 	handleFormChange(value) {
