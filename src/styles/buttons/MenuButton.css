@@ -1,0 +1,11 @@
+.menu-button {
+	display: none;
+	position: relative;
+	padding: 20px 25px 20px 25px;
+	transition: fill 0.3s;
+	cursor: pointer;
+}
+
+.menu-button:hover svg {
+	fill: rgb(236, 161, 255);
+}

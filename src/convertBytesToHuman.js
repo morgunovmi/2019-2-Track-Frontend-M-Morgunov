@@ -12,46 +12,42 @@
  * и класса (например, отрицательные числа)
  */
 
-
-
-var prefixEnum = { "K": 10, "M": 20, "G": 30, "T": 40, "P": 50 };
+var prefixEnum = { K: 10, M: 20, G: 30, T: 40, P: 50 };
 
 function ifFits(bytes, power) {
-  return bytes / Math.pow(2, power) < 1024 && bytes / Math.pow(2, power)
+	return bytes / Math.pow(2, power) < 1024 && bytes / Math.pow(2, power);
 }
 
 function prefixSet(bytes) {
-  if (ifFits(bytes, 10)) {
-    return "K"
-  }
-  if (ifFits(bytes, 20)) {
-    return "M"
-  }
-  if (ifFits(bytes, 30)) {
-    return "G"
-  }
-  if (ifFits(bytes, 40)) {
-    return "T"
-  }
-  if (ifFits(bytes, 50)) {
-    return "P"
-  }
+	if (ifFits(bytes, 10)) {
+		return 'K';
+	}
+	if (ifFits(bytes, 20)) {
+		return 'M';
+	}
+	if (ifFits(bytes, 30)) {
+		return 'G';
+	}
+	if (ifFits(bytes, 40)) {
+		return 'T';
+	}
+	if (ifFits(bytes, 50)) {
+		return 'P';
+	}
 }
 
 function output(bytes, string) {
-  let genBytes = bytes / Math.pow(2, prefixEnum[string])
-  if (!Number.isInteger(genBytes)) {
-    genBytes = genBytes.toFixed(2)
-  }
-  return genBytes + " " + string + "B"
+	let genBytes = bytes / Math.pow(2, prefixEnum[string]);
+	if (!Number.isInteger(genBytes)) {
+		genBytes = genBytes.toFixed(2);
+	}
+	return genBytes + ' ' + string + 'B';
 }
 
 export default function convertBytesToHuman(bytes) {
-  if (isNaN(bytes) || bytes < 0 || bytes == Infinity) {
-    return false
-  }
-  else {
-    return output(bytes, prefixSet(bytes))
-  }
+	if (isNaN(bytes) || bytes < 0 || bytes == Infinity) {
+		return false;
+	} else {
+		return output(bytes, prefixSet(bytes));
+	}
 }
-

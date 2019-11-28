@@ -1,38 +1,57 @@
-import React from 'react'
-import logo from '../assets/logo.svg'
-import styled from '@emotion/styled'
-import { keyframes } from '@emotion/core'
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { history as historyPropTypes } from 'history-prop-types';
+import headerStyles from '../styles/Header.css';
+import BackButton from './buttons/BackButton';
+import BurgerButton from './buttons/BurgerButton';
+import ChatInfo from './ChatInfo';
+import SearchButton from './buttons/SearchButton';
+import MenuButton from './buttons/MenuButton';
+import TickButton from './buttons/TickButton';
 
-const year = new Date().getFullYear()
+ChatPageHeader.propTypes = {
+	history: PropTypes.shape(historyPropTypes).isRequired,
+};
 
-const rotate360 = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`
-
-const TopBar = styled.div`
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: #fff;
-
-  .redux-logo {
-    animation: ${rotate360} infinite 20s linear;
-    height: 80px;
-  }
-`
-
-function Header() {
-  return (
-    <TopBar>
-      <img src={logo} className="redux-logo" alt="logo" />
-      <h2>Track Mail.Ru, {year}</h2>
-    </TopBar>
-  )
+export function ChatPageHeader({ history }) {
+	const { id } = useParams();
+	const chats = JSON.parse(window.localStorage.getItem('chats'));
+	const thisChat = chats[id];
+	return (
+		<div className="chat-header" style={headerStyles.Header}>
+			<BackButton history={history} />
+			<ChatInfo name={thisChat.name} chatid={id} />
+			<SearchButton />
+			<MenuButton />
+		</div>
+	);
 }
 
-export default Header
+export function ChatListHeader() {
+	return (
+		<div className="chat-header" style={headerStyles.Header}>
+			<BurgerButton />
+			<div className="chat-list-header">
+				<p className="clheader-text">Messenger</p>
+			</div>
+			<SearchButton />
+		</div>
+	);
+}
+
+ProfileHeader.propTypes = {
+	history: PropTypes.shape(historyPropTypes).isRequired,
+};
+
+export function ProfileHeader({ history }) {
+	return (
+		<div className="chat-header" style={headerStyles.Header}>
+			<BackButton history={history} />
+			<div className="chat-list-header">
+				<p className="clheader-text">Edit profile</p>
+			</div>
+			<TickButton />
+		</div>
+	);
+}

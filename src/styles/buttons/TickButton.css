@@ -1,0 +1,9 @@
+.tick-button {
+	display: flex;
+	padding: 20px 15px 20px 20px;
+	cursor: pointer;
+}
+
+.tick-button:hover svg {
+	fill: rgb(236, 161, 255);
+}
