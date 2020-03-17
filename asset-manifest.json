@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/2019-2-Track-Frontend-M-Morgunov/static/css/main.8cf938d2.chunk.css",
+    "main.js": "/2019-2-Track-Frontend-M-Morgunov/static/js/main.66f163ad.chunk.js",
+    "main.js.map": "/2019-2-Track-Frontend-M-Morgunov/static/js/main.66f163ad.chunk.js.map",
+    "runtime-main.js": "/2019-2-Track-Frontend-M-Morgunov/static/js/runtime-main.8f918f7f.js",
+    "runtime-main.js.map": "/2019-2-Track-Frontend-M-Morgunov/static/js/runtime-main.8f918f7f.js.map",
+    "static/js/2.83737bff.chunk.js": "/2019-2-Track-Frontend-M-Morgunov/static/js/2.83737bff.chunk.js",
+    "static/js/2.83737bff.chunk.js.map": "/2019-2-Track-Frontend-M-Morgunov/static/js/2.83737bff.chunk.js.map",
+    "index.html": "/2019-2-Track-Frontend-M-Morgunov/index.html",
+    "precache-manifest.b6d7e0991b7119fb04a4e4ea960e140f.js": "/2019-2-Track-Frontend-M-Morgunov/precache-manifest.b6d7e0991b7119fb04a4e4ea960e140f.js",
+    "service-worker.js": "/2019-2-Track-Frontend-M-Morgunov/service-worker.js",
+    "static/css/main.8cf938d2.chunk.css.map": "/2019-2-Track-Frontend-M-Morgunov/static/css/main.8cf938d2.chunk.css.map",
+    "static/media/chaticonph.png": "/2019-2-Track-Frontend-M-Morgunov/static/media/chaticonph.bdd9aaee.png",
+    "static/media/doubletick.svg": "/2019-2-Track-Frontend-M-Morgunov/static/media/doubletick.7319bcfe.svg",
+    "static/media/pencil.svg": "/2019-2-Track-Frontend-M-Morgunov/static/media/pencil.b5bd0851.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8f918f7f.js",
+    "static/js/2.83737bff.chunk.js",
+    "static/css/main.8cf938d2.chunk.css",
+    "static/js/main.66f163ad.chunk.js"
+  ]
+}
